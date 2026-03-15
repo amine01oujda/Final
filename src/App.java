@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -8,10 +10,10 @@ import javafx.stage.Stage;
 public class App extends Application {
     public static final int WIDTH = 800;
     public static final int HEIGHT = 600;
-    public static final int GAP = 50;	
+    public static final int GAP = 50;
 
     @Override
-    public void start(Stage stage) {
+    public void start(Stage stage) throws IOException {
         Pane pane = new Pane();
 
         Roads roads = new Roads();
@@ -46,7 +48,7 @@ public class App extends Application {
         });
 
         AnimationTimer timer = new AnimationTimer() {
-            private static final long FRAME_NANOS = 8_333_333;
+            private static final long FRAME_NANOS = 8_333_333L;
             private long lastUpdate = 0;
 
             @Override
@@ -72,6 +74,7 @@ public class App extends Application {
         stage.setY(100);
         stage.setMinWidth(WIDTH);
         stage.setMinHeight(HEIGHT);
+        // stage.setResizable(false);
         stage.show();
     }
 
